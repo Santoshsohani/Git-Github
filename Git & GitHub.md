@@ -147,38 +147,3 @@ This commands reverts to previous commit.
 	git merge branch-name
 	git push origin-main
 ```
-
-``` js
-  useEffect(() => {
-    setSchema(nodeToSchema(nodes,edges));
-  },[nodes,edges,setNodes,setEdges])
-
-
-  const postDataToDB = async () => {
-    try {
-     await axios.post('http://localhost:3001/schema', schema);
-    } catch (error) {
-        console.log("Error : ", error.message);
-    }
-  }
-
-  
-  const getDataFromDB = async () => {
-    try {
-      let count = 0
-      const { data } = await axios.get('http://localhost:3001/schema');
-      const { nodes, edges } = schemaToNodesEdges(data[data.length-1]);
-      console.log(nodes);
-      nodes.map((ele)=>{
-        if(ele.parentId){
-          count++
-        }
-      })
-      setParentCount(count+1)
-      setNodes(nodes);
-      setEdges(edges);
-    } catch (error) {
-        console.log("Error : ", error.message);
-    }
-  }
-```
